@@ -29,22 +29,25 @@ while (utente.length < lv - 16 && vinto) {
     if (bombe.includes(giocata)) {
         vinto = false;
     } else if (utente.includes(giocata)) {
-            alert('numero già giocato');
-        } else {
-            utente.push(giocata);
-        }
-    }
-
-    if (vinto) {
-        alert('HAI VINTO!');
+        alert('numero già giocato');
     } else {
-        alert('HAI PERSO! Hai totalizzato: ' + utente.length + 'punti');
+        utente.push(giocata);
     }
+}
+
+if (vinto) {
+    alert('HAI VINTO!');
+} else {
+    alert('HAI PERSO! Hai totalizzato: ' + utente.length + 'punti');
+}
 
 function genera_bombe(lv) {
     var bombe = [];
-    for (var i = 0; i < 16; i++) {
-        bombe.push(Math.floor(Math.random() * lv));
-    }
+    do {
+        n = Math.floor(Math.random() * lv) + 1;
+        if (!bombe.includes(n)) {
+            bombe.push(n);
+        }
+    } while (bombe.length < 16);
     return bombe;
 }
